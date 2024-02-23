@@ -1,0 +1,34 @@
+<%- include('../partials/header', { title: 'Mongoose Flights' }) %>
+
+<div class="card">
+  <div class="card-header">
+      <h2 class="card-title">Flight Details</h2>
+  </div>
+  <div class="card-body">
+      <div class="flight-details">
+          <p><strong>Airline:</strong> <%= flight.airline %></p>
+          <p><strong>Airport:</strong> <%= flight.airport %></p>
+          <p><strong>Flight Number:</strong> <%= flight.flightNo %></p>
+          <p><strong>Departs:</strong> <%= flight.departs.toDateString() %></p>
+          <form action="/flights/<%= flight._id %>/destinations" method="POST">
+              <label for="airport"><strong>Add Destination:</strong></label>
+              <select name="airport" id="airport">
+                  <option value="AUS">AUS</option>
+                  <option value="DFW">DFW</option>
+                  <option value="DEN">DEN</option>
+                  <option value="LAX">LAX</option>
+                  <option value="SAN">SAN</option>
+              </select>
+              <button type="submit">Add Destination</button>
+          </form>
+          <% flight.destinations.forEach(function(dest) { %>
+              <p><strong>Destination:</strong> <%= dest %></p>
+          <% }); %>
+      </div>
+  </div>
+  <div class="card-footer">
+      <a href="/flights" class="btn btn-primary">Back to Flights List</a>
+  </div>
+</div>
+
+<%- include('../partials/footer') %>

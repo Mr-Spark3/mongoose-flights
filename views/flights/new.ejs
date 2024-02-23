@@ -1,6 +1,7 @@
+<%- include('../partials/header', { title: 'Add Flights' }) %>
 
-<h2>Add a New Flight</h2>
-<form action="/flights" method="POST">
+<h2 class="h2">New Flight</h2>
+<form action="/flights" method="POST" class="addflight">
 
     <label>Airport:
         <select name="airport" id="airport">
@@ -14,21 +15,23 @@
 
     <label>Airline:
         <select name="airline" id="airline">
-            <option value="united">United</option>
-            <option value="southwest">Southwest</option>
-            <option value="delta">Delta</option>
-            <option value="spirit">Spirit</option>
-            <option value="frontier">Frontier</option>
+            <option value="United">United</option>
+            <option value="Southwest">Southwest</option>
+            <option value="Delta">Delta</option>
+            <option value="Spirit">Spirit</option>
+            <option value="Frontier">Frontier</option>
         </select>
     </label>
 
     <label for="flightNo">Flight Number:</label>
-    <input type="number" name="flightNo" id="flightNo" min="10" max="999" required>
+    <input type="number" name="flightNo" id="flightNo" min="10" max="9999" required>
 
     <label for="departs">Departure Date:</label>
-    <input type="datetime-local" name="departs" id="departs" value="T00:00" required>
+    <input type="datetime-local" name="departs" id="departs" value="T00" required>
 
-    <a href="/"><button type='submit'>submit</button></a>
+    <a href="/"><button type='submit'>Submit</button></a>
 </form>
+
+<%- include('../partials/footer') %>
 
 

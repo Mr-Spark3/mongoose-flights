@@ -1,27 +1,29 @@
 <%- include('../partials/header') %>
 
 <body>
-    <table class="table">
-        <thead>
-          <tr class="row">
+  <table class="table">
+    <thead>
+        <tr class="cols">
             <th scope="col">#</th>
             <th scope="col">Airline</th>
             <th scope="col">Airport</th>
-            <th scope="col">Flight No.</th>
+            <th scope="col">Flight Number</th>
             <th scope="col">Departs</th>
-          </tr>
-        </thead>
-        <tbody>
-          <% flights.forEach((flight, index) => { %>
-            <tr calss="row"> 
-              <th scope="row"><%= index + 1 %></th>
-              <td><%= flight.airline %></td>
-              <td><%= flight.airport %></td>
-              <td><%= flight.flightNo %></td>
-              <td><%= flight.departs %></td>
+            <th scope="col">Details</th>
+        </tr>
+    </thead>
+    <tbody>
+        <% flights.forEach((flight, index) => { %>
+            <tr class="rows">
+                <th scope="row"><%= index + 1 %></th>
+                <td><%= flight.airline %></td>
+                <td><%= flight.airport %></td>
+                <td><%= flight.flightNo %></td>
+                <td><%= flight.departs %></td>
+                <td><a  class='detail-link' href="/flights/<%= flight._id %>"><button class="details-btn">Flight Details</button></a></td>
             </tr>
-          <% }); %>
-        </tbody>
-      </table>
+        <% }); %>
+    </tbody>
+</table>
     
       <%- include('../partials/footer') %>
