@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title><% title %></title>
+    <link rel="stylesheet" href="/stylesheets/style.css">
+</head>
+<body>
+    <nav>
+        <h1><%= title %></h1>
+        <a href="/flights/new" <%- title === 'Add Flight' ? 'class="active"' : '' %>><button class="'btn">ADD FLIGHT</button></a>
+        <a href="/flights" <%- title === 'All flights' ? 'class="active"' : '' %>><button class="'btn">ALL FLIGHTS</button></a>
+      </nav>
+      <main>
+        
+    

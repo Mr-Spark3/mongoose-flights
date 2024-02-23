@@ -1,0 +1,30 @@
+body {
+  margin: 0;
+  height: 100vh;
+  display: grid;
+  grid-template-rows: 75px 1fr;
+  grid-template-areas: 
+    "nav"
+    "main"
+}
+
+body > nav {
+  grid-area: nav;
+  background-color: rgba(0, 0, 0, .7);
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  color: #fff;
+  width:100%;
+  padding: 10px 0 20px 50px;
+
+}
+
+.table {
+  border: 2px black solid;
+  width: 100%;
+  length: 100%;
+  text-align: center;
+  padding: 10px 0 10px 0;
+  
+}
