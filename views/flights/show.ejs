@@ -1,3 +1,5 @@
+
+
 <%- include('../partials/header', { title: 'Mongoose Flights' }) %>
 
 <div class="card">
@@ -10,25 +12,35 @@
           <p><strong>Airport:</strong> <%= flight.airport %></p>
           <p><strong>Flight Number:</strong> <%= flight.flightNo %></p>
           <p><strong>Departs:</strong> <%= flight.departs.toDateString() %></p>
-          <form action="/flights/<%= flight._id %>/destinations" method="POST">
-              <label for="airport"><strong>Add Destination:</strong></label>
-              <select name="airport" id="airport">
-                  <option value="AUS">AUS</option>
-                  <option value="DFW">DFW</option>
-                  <option value="DEN">DEN</option>
-                  <option value="LAX">LAX</option>
-                  <option value="SAN">SAN</option>
-              </select>
-              <button type="submit">Add Destination</button>
-          </form>
-          <% flight.destinations.forEach(function(dest) { %>
-              <p><strong>Destination:</strong> <%= dest %></p>
-          <% }); %>
+          <form id="addDestination" action="/flights/<%= flight._id %>/destinations" method="POST">
+            <label for="airport"><strong>Add Destination:</strong></label>
+            <select name="airport" id="airport">
+                <option value="AUS">AUS</option>
+                <option value="DFW">DFW</option>
+                <option value="DEN">DEN</option>
+                <option value="LAX">LAX</option>
+                <option value="SAN">SAN</option>
+            </select>
+            <label for="arrival"><strong>Arrival Date/Time:</strong></label>
+            <input type="datetime-local" name="arrival" id="arrival" required>
+            <button type="submit">Add Destination</button>
+        </form>
+          <% if (flight.destinations.length > 0) { %>
+              <h3>Destinations:</h3>
+              <ul>
+                  <% flight.destinations.forEach(function(dest) { %>
+                      <li><strong>Airport:</strong> <%= dest.airport %>, <strong>Arrival:</strong> <%= dest.arrival.toDateString() %></li>
+                  <% }); %>
+              </ul>
+          <% } else { %>
+              <p>No destinations added yet.</p>
+          <% } %>
       </div>
   </div>
   <div class="card-footer">
       <a href="/flights" class="btn btn-primary">Back to Flights List</a>
   </div>
 </div>
+
 
 <%- include('../partials/footer') %>

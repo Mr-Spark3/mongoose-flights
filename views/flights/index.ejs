@@ -9,20 +9,25 @@
             <th scope="col">Airport</th>
             <th scope="col">Flight Number</th>
             <th scope="col">Departs</th>
+            <th scope="col">Destination</th>
+            <th scope="col">Arrival D/T</th>
             <th scope="col">Details</th>
+            
         </tr>
     </thead>
     <tbody>
-        <% flights.forEach((flight, index) => { %>
-            <tr class="rows">
-                <th scope="row"><%= index + 1 %></th>
-                <td><%= flight.airline %></td>
-                <td><%= flight.airport %></td>
-                <td><%= flight.flightNo %></td>
-                <td><%= flight.departs %></td>
-                <td><a  class='detail-link' href="/flights/<%= flight._id %>"><button class="details-btn">Flight Details</button></a></td>
-            </tr>
-        <% }); %>
+      <% flights.forEach((flight, index) => { %>
+        <tr class="rows">
+          <th scope="row"><%= index + 1 %></th>
+          <td><%= flight.airline %></td>
+          <td><%= flight.airport %></td>
+          <td><%= flight.flightNo %></td>
+          <td><%= flight.departs.toDateString() %></td>
+          <td><%= flight.destinations.map(dest => dest.airport).join(', ') %></td>
+          <td><%= flight.destinations.map(dest => dest.arrival.toDateString()).join(', ') %></td>
+          <td><a class='detail-link' href="/flights/<%= flight._id %>"><button class="details-btn">Flight Details</button></a></td>
+        </tr>
+      <% }); %>
     </tbody>
 </table>
     
