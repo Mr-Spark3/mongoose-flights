@@ -1,4 +1,5 @@
 const Flight = require('../models/flight');
+const Ticket = require('../models/ticket');
 
 module.exports = {
   index,
@@ -12,21 +13,25 @@ module.exports = {
     res.render('flights/index', { title: 'All Flights', flights });
   }
 
-  function newFlight(req, res) {
-    res.render('flights/new', { errorMsg: ''});
-  }
+  async function newFlight(req, res) {
+    const flight = await Flight.findById(req.params.id);
+    res.render('flights/new', { title: 'New Flight', flight });
+}
 
-  async function show(req, res) {
-    try {
-        const flight = await Flight.findById(req.params.id);
-        if (!flight) {
-            return res.status(404).send('Flight not found');
-        }
-        res.render('flights/show', { title: 'Flight Details', flight });
-    } catch (error) {
-        console.error(error);
-        res.status(500).send('Internal Server Error');
-    }
+async function show(req, res) {
+  try {
+      const flight = await Flight.findById(req.params.id);
+      if (!flight) {
+          return res.status(404).send('Flight not found');
+      }
+
+      const tickets = await Ticket.find({ flight: flight._id });
+
+      res.render('flights/show', { title: 'Flight Details', flight, tickets });
+  } catch (error) {
+      console.error(error);
+      res.status(500).send('Internal Server Error');
+  }
 }
 
 

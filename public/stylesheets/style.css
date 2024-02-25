@@ -94,3 +94,17 @@ tr:hover {
   
 }
 
+#ticket-form {
+  display: flex;
+  justify-content: center;
+  
+}
+
+.ticket-title {
+  text-align: center;
+  text-decoration: underline;
+  font-size: 20px;
+  margin-bottom: 20px;
+}
+
+
